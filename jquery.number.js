@@ -578,7 +578,8 @@
 			{
 				// return the collection.
 				return this.each(function(){
-					var $this = $(this), num = +$this.text().replace(regex_dec_num,'').replace(regex_dec,'.');
+					//var $this = $(this), num = +$this.text().replace(regex_dec_num,'').replace(regex_dec,'.');
+					var $this = $(this), num = +$this.text().replace(new RegExp('[^'+u_dec+'0-9-]','g'),'').replace(regex_dec,'.');
 					$this.number( !isFinite(num) ? 0 : +num, decimals, dec_point, thousands_sep );
 				});
 			}
